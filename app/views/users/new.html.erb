@@ -1,0 +1,21 @@
+<h1>Become A New Member Of  Dojo Groups!</h1>
+
+<h3>Please Complete The Form Below:</h3>
+
+<form class="new" action="/users" method="post">
+   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+   <label for="fname">First Name: <input type="name" name="user[fname]" placeholder="Enter your first name"></label><br><br>
+
+   <label for="lname">Last Name: <input type="name" name="user[lname]" placeholder="Enter your last name"></label><br><br>
+
+   <label for="email">Email: <input type="email" name="user[email]" placeholder="Enter your email address here"></label><br><br>
+
+   <label for="password">Password: <input type="password" name="user[password]" placeholder="Enter your password here">*password MUST be at least 8 characters</label><br><br>
+
+   <label for="password_confirmation">Confirm Password: <input type="password" name="user[password_confirmation]" placeholder="Password MUST match"></label><br><br>
+
+   <input type="submit" value="Register Me!!">
+</form><hr>
+
+<br><br><button type="button" name="home"><a href="/sessions/index"> Back To Login Page</a></button>

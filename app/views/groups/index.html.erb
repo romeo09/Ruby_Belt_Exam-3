@@ -1,0 +1,36 @@
+<h1>Welcome <%= @user.fname %> <%= @user.lname %>!!</h1>
+
+
+<h3>Here Are All The Groups/Organizations You Can Join:</h3>
+
+<div id="groups">
+  <% if @groups != nil %>
+      <% @groups.each do |show| %>
+         <h3><a href="/groups/<%= show.id %>"><%= show.name %></a></h3>
+         <h4>Members: <%= show.joins.count %></h4>
+         <h4>Description: <%= show.description %></h4><hr>
+         <% if current_user == show.user %>
+             <form action="/groups/<%= show.id %>" method="post">
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <input name="_method" value="delete" type="hidden">
+
+                <input type="submit" value="Delete Group">
+             </form>
+         <% end %><hr>
+      <% end %>
+   <%end%>
+
+
+</div><br><br>
+<div class="newGroup"><br><br><hr>
+   <h2>Create A New Group/Organization:</h2>
+   <form class="new" action="/groups" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <label for="name">Organization Name: <input type="text" name="group[name]" placeholder="Enter Name Of Organization"></label><br><br>
+
+      <label for="description">Organization Description:  <textarea name="group[description]"></textarea></label><br><br>
+
+      <input type="submit" value="Create Organization/Group">
+   </form><hr>
+</div>

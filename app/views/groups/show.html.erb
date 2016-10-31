@@ -1,0 +1,31 @@
+<h1>Group/Organization Details:</h1>
+
+<div class="groupDetails">
+     <h2>Name: <%= @group.name %></h2>
+     <h4>Description: <%= @group.description %></h4>
+     <h4>Created By:  <%= @user.fname %> <%= @user.lname %></h4>
+     <% if @group.members.include?(current_user) %>
+         <form action='/joins' method='post'>
+            <input type='hidden' name='_method' value='delete'>
+            <input type='hidden' name='group_id' value='<%= @group.id %>'>
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+
+            <input type='submit' value='Leave Group'>
+         </form>
+     <% else %>
+         <form action='/joins' method='post'>
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+            <input type='hidden' name='group_id' value='<%= @group.id %>'>
+
+            <input type='submit' value='Join Group'>
+         </form><hr>
+     <% end %>
+     <%@attendees.each do |a| %>
+         <h4>Members:</h4>
+            <ol>
+               <li><%= a.fname%> <%= a.lname%></li>
+            </ol>
+      <%end%>
+</div>
+
+<hr><button type="button" name="profile"><a href="/groups/index/<%= session[:user_id] %>">Back To Organization Dashboard</a></button>
