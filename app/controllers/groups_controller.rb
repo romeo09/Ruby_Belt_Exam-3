@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   def index
      @user = User.where(id: session[:user_id]).first
      @groups = Group.all
-     @group = Group.find(params[:id])
+   
   end
 
   def show
