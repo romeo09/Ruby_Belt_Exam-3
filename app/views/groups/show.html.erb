@@ -20,8 +20,9 @@
             <input type='submit' value='Join Group'>
          </form><hr>
      <% end %>
+     
+     <h4>Members:</h4>
      <%@attendees.each do |a| %>
-         <h4>Members:</h4>
             <ol>
                <li><%= a.fname%> <%= a.lname%></li>
             </ol>
