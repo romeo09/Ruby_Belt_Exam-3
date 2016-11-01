@@ -20,11 +20,11 @@
             <input type='submit' value='Join Group'>
          </form><hr>
      <% end %>
-     
+
      <h4>Members:</h4>
      <%@attendees.each do |a| %>
             <ol>
-               <li><%= a.fname%> <%= a.lname%></li>
+               <ul><%= a.fname%> <%= a.lname%></ul>
             </ol>
       <%end%>
 </div>
